@@ -1,2 +1,22 @@
 [2026-01-13 14:26:17] WARN: Invalid registration data
 [2026-01-13 14:26:39] INFO: User registered: mh04359@gmail.com
+[2026-01-14 13:56:28] WARN: Invalid login data
+[2026-01-14 13:57:26] WARN: Invalid login data
+[2026-01-14 13:57:32] WARN: Invalid login data
+[2026-01-14 13:58:22] INFO: User registered: mh04359@gmail.com
+[2026-01-14 13:58:38] INFO: User logged in: mh04359@gmail.com
+[2026-01-14 13:58:48] INFO: Invalid password for user: mh04359@gmail.com
+[2026-01-14 13:59:05] INFO: User already exists: mh04359@gmail.com
+[2026-01-14 22:31:55] INFO: User registered: ah768@gmail.com
+[2026-01-14 22:59:39] INFO: User registered: ah768@gmail.com
+[2026-01-14 22:59:51] INFO: User logged in: ah768@gmail.com
+[2026-01-14 22:59:58] INFO: User logged in: ah768@gmail.com
+[2026-01-14 23:02:20] INFO: User logged in: ah768@gmail.com
+[2026-01-14 23:02:28] INFO: User logged in: ah768@gmail.com
+[2026-01-14 23:05:01] INFO: User not found: a5768@gmail.com
+[2026-01-14 23:05:20] INFO: Invalid password for user: ah768@gmail.com
+[2026-01-14 23:05:59] INFO: User logged in: ah768@gmail.com
+[2026-01-14 23:27:02] INFO: User logged in: ah768@gmail.com
+[2026-01-14 23:29:48] INFO: User logged in: ah768@gmail.com
+[2026-01-14 23:39:38] INFO: User logged in: ah768@gmail.com
+[2026-01-14 23:41:11] INFO: User logged in: ah768@gmail.com

@@ -2,10 +2,10 @@
 import { useState } from "react";
 import { toast, Toaster } from "sonner";
 import { Eye, EyeOff, User, Lock, Mail } from "lucide-react";
-// import { registerUser } from "@/lib/api";
+import { loginUser } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { z } from "zod";
+import { email, z } from "zod";
 
 const ItemsSchema = z
   .object({
@@ -65,26 +65,20 @@ export default function SignupPage() {
     setIsLoading(true);
 
     try {
-      // Uncomment when registerUser is available
-      // const response = await registerUser(name, email, password);
+     
+     const response = await loginUser(form.email, form.password);
 
-      // Temporary mock response - remove when API is ready
-      const response = {
-        isSuccess: true,
-        message: "Account created successfully!",
-      };
-
-      if (response.isSuccess) {
-        toast.success(response.message || "Account created successfully!");
+      if (response.success) {
+        toast.success(response.message);
         setTimeout(() => {
-          router.push("/auth/login");
+          router.push("/dashboard");
         }, 2000);
       } else {
-        toast.error(response.message || "Registration failed");
+        toast.error(response.message);
       }
     } catch (error: any) {
-      console.error("Registration error:", error);
-      toast.error(error.message || "Registration failed. Please try again.");
+      console.error("Login error:", error);
+      toast.error(error.message || "Login failed. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -137,18 +131,18 @@ export default function SignupPage() {
 
           {/* Email Field */}
           <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest">
+            <label className="text-xs font-bold text-slate-700 uppercase tracking-widest">
               Email
             </label>
             <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-700 w-5 h-5" />
               <input
                 type="email"
                 name="email"
                 value={form.email}
                 onChange={handleInputChange}
                 disabled={isLoading}
-                className={`w-full pl-12 pr-4 py-4 bg-slate-50 border rounded-2xl focus:outline-none focus:ring-2 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed text-slate-500 placeholder:text-slate-400 ${
+                className={`w-full pl-12 pr-4 py-4 bg-slate-50 border rounded-2xl focus:outline-none focus:ring-2 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 placeholder:text-slate-400 ${
                   fieldErrors.email
                     ? "border-red-400 focus:ring-red-500/20 focus:border-red-500"
                     : "border-slate-200 focus:ring-emerald-500/20 focus:border-emerald-500"
@@ -176,11 +170,11 @@ export default function SignupPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest">
+            <label className="text-xs font-bold text-slate-700 uppercase tracking-widest">
               Password
             </label>
             <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-700 w-5 h-5" />
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
@@ -188,7 +182,7 @@ export default function SignupPage() {
                 onChange={handleInputChange}
                 disabled={isLoading}
                 autoComplete="new-password"
-                className={`w-full pl-12 pr-12 py-4 bg-slate-50 border rounded-2xl focus:outline-none focus:ring-2 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed text-slate-500 placeholder:text-slate-400 appearance-none ${
+                className={`w-full pl-12 pr-12 py-4 bg-slate-50 border rounded-2xl focus:outline-none focus:ring-2 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 placeholder:text-slate-400 appearance-none ${
                   fieldErrors.password
                     ? "border-red-400 focus:ring-red-500/20 focus:border-red-500"
                     : "border-slate-200 focus:ring-emerald-500/20 focus:border-emerald-500"
@@ -234,7 +228,7 @@ export default function SignupPage() {
             disabled={isLoading}
             className="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/20 active:scale-95 mt-4 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100"
           >
-            {isLoading ? "Creating Account..." : "Sign Up"}
+            {isLoading ? "Logging In..." : "Login"}
           </button>
 
           {/* Footer */}

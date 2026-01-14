@@ -12,13 +12,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -31,4 +24,13 @@ input::-webkit-credentials-auto-fill-button {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 9999px #f8fafc inset !important;
+  -webkit-text-fill-color: #334155 !important;
+  transition: background-color 5000s ease-in-out 0s;
 }

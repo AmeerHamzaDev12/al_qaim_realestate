@@ -55,3 +55,43 @@ export const registerUser = async (req: Request, res: Response) => {
     return res.status(500).json({ success: false, message: 'Registration failed', data: { error: e.message } });
   }
 };
+
+const loginSchema = z.object({
+  email: z.string().nonempty('Email is required').email('Invalid email format'),
+  password: z.string().nonempty('Password is required'),
+});
+
+export const loginUser = async (req: Request, res: Response) => {
+  const parsed = loginSchema.safeParse(req.body);
+  if (!parsed.success) {
+    logger.warn('Invalid login data');
+    return res.status(400).json({
+      success: false,
+      message: 'Validation failed',
+      data: parsed.error.flatten().fieldErrors
+    });
+  }
+
+  const { email, password } = parsed.data;
+  try {
+    const user = await prisma.userAdmin.findUnique({ where: { email } });
+    if (!user) {
+      logger.info(`User not found: ${email}`);
+      return res.status(404).json({ success: false, message: 'User not found', data: null });
+    }
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      logger.info(`Invalid password for user: ${email}`);
+      return res.status(401).json({ success: false, message: 'Invalid credentials', data: null });
+    }
+    const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1d' });
+    await prisma.userAdmin.update({ where: { id: user.id }, data: { authtoken: token } });
+
+    logger.info(`User logged in: ${email}`);
+    return res.status(200).json({ success: true, message: 'User logged in successfully', data: { token } });
+
+  } catch (e: any) {
+    logger.error(`Login failed for ${email}: ${e.message}`);
+    return res.status(500).json({ success: false, message: 'Login failed', data: { error: e.message } });
+  }
+};
