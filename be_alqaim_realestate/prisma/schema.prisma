@@ -28,3 +28,19 @@ model userAdmin {
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
+
+model Customer {
+  id          String   @id @default(uuid())
+  name        String
+  cnic        String   @unique
+  phone       String
+  address     String?
+  plot        String
+  plotSize    String?
+  plotType    String?
+  phase       String
+  bookingDate DateTime
+  totalPrice  Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

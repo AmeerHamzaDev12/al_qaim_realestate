@@ -1,0 +1,31 @@
+[2026-01-17 17:09:54] ERROR: Login failed for ah768@gmail.com: 
+Invalid `prisma.userAdmin.findUnique()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\auth.controllers.ts:77:41
+
+  74 
+  75 const { email, password } = parsed.data;
+  76 try {
+→ 77   const user = await prisma.userAdmin.findUnique(
+Can't reach database server at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`.
+[2026-01-19 15:32:47] ERROR: Error fetching customers: 
+Invalid `prisma.customer.findMany()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:23:45
+
+  20 
+  21 export const getAllCustomers = async (req: Request, res: Response) => {
+  22   try {
+→ 23     const customers = await prisma.customer.findMany(
+Can't reach database server at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`.
+[2026-01-19 17:53:44] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:229:33
+
+  226   });
+  227 }
+  228 
+→ 229 await prisma.customer.delete(
+An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.

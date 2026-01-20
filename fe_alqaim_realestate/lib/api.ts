@@ -1,4 +1,34 @@
 "use client";
+
+export interface Customer {
+  id: string;
+  name: string;
+  cnic: string;
+  phone: string;
+  address: string;
+  plot: string;
+  plotSize: string;
+  plotType: string;
+  phase: string;
+  bookingDate: string;
+  totalPrice: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CustomerFormData {
+  name: string;
+  cnic: string;
+  phone: string;
+  address: string;
+  plot: string;
+  plotSize: string;
+  plotType: string;
+  phase: string;
+  bookingDate: string;
+  totalPrice: string;
+}
+
 export async function registerUser(userData: {
   name: string;
   email: string;
@@ -63,9 +93,174 @@ export async function loginUser(email: string, password: string) {
   const data = await res.json();
   if (!res.ok) throw new Error(data.message);
 
-  if (data.token) {
-    localStorage.setItem("authToken", data.token);
-  }
-
+  if (data.data && data.data.token) {
+  localStorage.setItem("authToken", data.data.token);
+}
   return data;
+}
+
+export async function getAllCustomers() {
+  try {
+    const token = localStorage.getItem("authToken");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}customers/all`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+      return {
+        success: true,
+        data: data.data,
+        count: data.count,
+      };
+    }
+
+    return {
+      success: false,
+      message: data.message || "Failed to fetch customers",
+    };
+  } catch (error: any) {
+    console.error("getAllCustomers error:", error);
+    return {
+      success: false,
+      message: error.message || "Failed to fetch customers",
+    };
+  }
+}
+
+export async function getCustomerById(id: string) {
+  try {
+    const token = localStorage.getItem("authToken");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}customers/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+      return {
+        success: true,
+        data: data.data,
+      };
+    }
+
+    return {
+      success: false,
+      message: data.message || "Failed to fetch customer",
+    };
+  } catch (error: any) {
+    console.error("getCustomerById error:", error);
+    return {
+      success: false,
+      message: error.message || "Failed to fetch customer",
+    };
+  }
+}
+
+export async function createCustomer(customerData: CustomerFormData) {
+  try {
+    const token = localStorage.getItem("authToken");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}customers/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(customerData),
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+      return {
+        success: true,
+        message: data.message || "Customer created successfully",
+        data: data.data,
+      };
+    }
+
+    return {
+      success: false,
+      message: data.message || "Failed to create customer",
+      data: data.data,
+    };
+  } catch (error: any) {
+    console.error("createCustomer error:", error);
+    return {
+      success: false,
+      message: error.message || "Failed to create customer",
+    };
+  }
+}
+
+export async function updateCustomer(id: string, customerData: Partial<CustomerFormData>) {
+  try {
+    const token = localStorage.getItem("authToken");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}customers/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(customerData),
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+      return {
+        success: true,
+        message: data.message || "Customer updated successfully",
+        data: data.data,
+      };
+    }
+
+    return {
+      success: false,
+      message: data.message || "Failed to update customer",
+    };
+  } catch (error: any) {
+    console.error("updateCustomer error:", error);
+    return {
+      success: false,
+      message: error.message || "Failed to update customer",
+    };
+  }
+}
+
+export async function deleteCustomer(id: string) {
+  try {
+    const token = localStorage.getItem("authToken");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}customers/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+      return {
+        success: true,
+        message: data.message || "Customer deleted successfully",
+      };
+    }
+
+    return {
+      success: false,
+      message: data.message || "Failed to delete customer",
+    };
+  } catch (error: any) {
+    console.error("deleteCustomer error:", error);
+    return {
+      success: false,
+      message: error.message || "Failed to delete customer",
+    };
+  }
 }

@@ -6,7 +6,8 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
-import router from './routes/auth.routes';
+import authRouter from './routes/auth.routes';
+import customerRouter from './routes/customers.routes';
 // import path from 'path';
 
 dotenv.config();
@@ -26,7 +27,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(compression());
 
-app.use('/',router);
+app.use('/', authRouter);
+app.use('/', customerRouter);
 app.use((req: Request, res: Response) => {
   return res.status(404).json({
     success: false,

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 import {
   LayoutDashboard,
   Users,
@@ -21,7 +22,7 @@ const menuItems = [
   },
   {
     name: "Customers",
-    href: "/dashboard/customers",
+    href: "/customers",
     icon: Users,
   },
   {
@@ -43,14 +44,19 @@ const menuItems = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const { logout, isAuthenticated, loading: authLoading } = useAuth();
+  if (authLoading && !isAuthenticated) return null;
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <div className="w-64 bg-slate-800 min-h-screen flex flex-col">
       {/* Logo */}
       <div className="p-6 flex items-center gap-3">
-        <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
+        <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
           <Image
-            src="/Gemini_Generated_Image_h2fpy2h2fpy2h2fp.png"
+            src="/Gemini_Generated_Image_h2fpy2h2fpy2h2fp-removebg-preview.png"
             alt="Logo"
             width={40}
             height={40}
@@ -85,7 +91,10 @@ export default function Sidebar() {
 
       {/* Logout */}
       <div className="p-4">
-        <button className="flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-slate-700 rounded-lg w-full transition-colors">
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-slate-700 rounded-lg w-full transition-colors"
+        >
           <LogOut className="w-5 h-5" />
           <span>Logout</span>
         </button>

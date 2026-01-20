@@ -20,3 +20,76 @@
 [2026-01-14 23:29:48] INFO: User logged in: ah768@gmail.com
 [2026-01-14 23:39:38] INFO: User logged in: ah768@gmail.com
 [2026-01-14 23:41:11] INFO: User logged in: ah768@gmail.com
+[2026-01-15 11:18:02] INFO: User logged in: ah768@gmail.com
+[2026-01-17 15:34:50] INFO: User not found: mh04359@gmail.com
+[2026-01-17 15:35:36] INFO: User logged in: ah768@gmail.com
+[2026-01-17 17:09:54] ERROR: Login failed for ah768@gmail.com: 
+Invalid `prisma.userAdmin.findUnique()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\auth.controllers.ts:77:41
+
+  74 
+  75 const { email, password } = parsed.data;
+  76 try {
+→ 77   const user = await prisma.userAdmin.findUnique(
+Can't reach database server at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`.
+[2026-01-17 17:10:33] INFO: User logged in: ah768@gmail.com
+[2026-01-17 17:15:56] WARN: Invalid customer data
+[2026-01-17 17:41:14] WARN: Invalid customer data
+[2026-01-17 17:41:27] WARN: Invalid customer data
+[2026-01-17 22:27:09] INFO: User logged in: ah768@gmail.com
+[2026-01-17 22:53:35] INFO: User logged in: ah768@gmail.com
+[2026-01-17 22:55:34] INFO: User logged in: ah768@gmail.com
+[2026-01-19 15:14:45] INFO: User logged in: ah768@gmail.com
+[2026-01-19 15:20:05] INFO: User logged in: ah768@gmail.com
+[2026-01-19 15:21:16] INFO: User logged in: ah768@gmail.com
+[2026-01-19 15:32:47] ERROR: Error fetching customers: 
+Invalid `prisma.customer.findMany()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:23:45
+
+  20 
+  21 export const getAllCustomers = async (req: Request, res: Response) => {
+  22   try {
+→ 23     const customers = await prisma.customer.findMany(
+Can't reach database server at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`.
+[2026-01-19 15:33:11] INFO: User logged in: ah768@gmail.com
+[2026-01-19 16:31:18] INFO: User logged in: ah768@gmail.com
+[2026-01-19 16:33:05] INFO: User logged in: ah768@gmail.com
+[2026-01-19 16:34:31] INFO: User logged in: ah768@gmail.com
+[2026-01-19 16:37:55] INFO: User logged in: ah768@gmail.com
+[2026-01-19 16:37:58] INFO: User logged in: ah768@gmail.com
+[2026-01-19 16:38:49] INFO: User logged in: ah768@gmail.com
+[2026-01-19 16:39:44] WARN: Invalid customer data
+[2026-01-19 16:39:47] WARN: Invalid customer data
+[2026-01-19 16:39:49] WARN: Invalid customer data
+[2026-01-19 16:39:50] WARN: Invalid customer data
+[2026-01-19 16:39:50] WARN: Invalid customer data
+[2026-01-19 16:39:50] WARN: Invalid customer data
+[2026-01-19 16:39:51] WARN: Invalid customer data
+[2026-01-19 16:39:51] WARN: Invalid customer data
+[2026-01-19 16:39:51] WARN: Invalid customer data
+[2026-01-19 16:40:58] WARN: Invalid customer data
+[2026-01-19 16:41:20] WARN: Invalid customer data
+[2026-01-19 16:41:35] INFO: User logged in: ah768@gmail.com
+[2026-01-19 16:41:57] WARN: Invalid customer data
+[2026-01-19 16:42:35] WARN: Invalid customer data
+[2026-01-19 16:44:21] INFO: User logged in: ah768@gmail.com
+[2026-01-19 16:46:10] INFO: User logged in: ah768@gmail.com
+[2026-01-19 17:00:34] INFO: User logged in: ah768@gmail.com
+[2026-01-19 17:04:33] INFO: User logged in: ah768@gmail.com
+[2026-01-19 17:14:29] INFO: User logged in: ah768@gmail.com
+[2026-01-19 17:18:36] INFO: User logged in: ah768@gmail.com
+[2026-01-19 17:29:09] INFO: User logged in: ah768@gmail.com
+[2026-01-19 17:35:46] INFO: User logged in: ah768@gmail.com
+[2026-01-19 17:53:44] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:229:33
+
+  226   });
+  227 }
+  228 
+→ 229 await prisma.customer.delete(
+An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.

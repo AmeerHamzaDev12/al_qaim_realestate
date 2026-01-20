@@ -1,20 +1,20 @@
 "use client";
 import { useState } from "react";
 import { toast, Toaster } from "sonner";
-import { Eye, EyeOff, User, Lock, Mail } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { loginUser } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { email, z } from "zod";
+import { useAuth } from "@/context/AuthContext";
+import { z } from "zod";
 
-const ItemsSchema = z
-  .object({
-    email: z.string().email("Invalid email address"),
-    password: z
-      .string()
-      .min(8, "Password must be at least 8 characters")
-      .regex(/[^a-zA-Z0-9]/, "Password must contain a special character"),
-  });
+const ItemsSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z
+    .string()
+    .min(8, "Password must be at least 8 characters")
+    .regex(/[^a-zA-Z0-9]/, "Password must contain a special character"),
+});
 
 type FieldErrors = {
   email?: string;
@@ -23,6 +23,7 @@ type FieldErrors = {
 
 export default function SignupPage() {
   const router = useRouter();
+  const { login } = useAuth();
 
   const [form, setForm] = useState({
     email: "",
@@ -65,14 +66,11 @@ export default function SignupPage() {
     setIsLoading(true);
 
     try {
-     
-     const response = await loginUser(form.email, form.password);
+      const response = await loginUser(form.email, form.password);
 
       if (response.success) {
         toast.success(response.message);
-        setTimeout(() => {
-          router.push("/dashboard");
-        }, 2000);
+        login(response.data.token);
       } else {
         toast.error(response.message);
       }
