@@ -43,4 +43,16 @@ model Customer {
   totalPrice  Float
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  payments    customerPayments[]
+}
+
+model customerPayments{
+  id          String   @id @default(uuid())
+  method      String   
+  date        DateTime @default(now())
+  amount      Float
+  receipt     String
+  customerId  String
+  customer    Customer @relation(fields: [customerId], references: [id])
 }

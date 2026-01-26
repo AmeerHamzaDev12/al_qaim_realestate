@@ -1,3 +1,4 @@
+// context/AuthContext.tsx
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
@@ -19,7 +20,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    // Check for token on mount
+    const storedToken = localStorage.getItem("authToken");
     if (storedToken) {
       setToken(storedToken);
     }
@@ -27,13 +29,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const login = (newToken: string) => {
-    localStorage.setItem("authtoken", newToken);
+    localStorage.setItem("authToken", newToken);
     setToken(newToken);
     router.push("/dashboard");
   };
 
   const logout = () => {
-    localStorage.removeItem("authtoken");
+    localStorage.removeItem("authToken");
     setToken(null);
     router.push("/auth/login");
   };

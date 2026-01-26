@@ -93,3 +93,82 @@ E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers
   228 
 → 229 await prisma.customer.delete(
 An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.
+[2026-01-20 23:05:52] INFO: User logged in: ah768@gmail.com
+[2026-01-20 23:37:49] INFO: User logged in: ah768@gmail.com
+[2026-01-21 12:17:39] INFO: User logged in: ah768@gmail.com
+[2026-01-21 14:03:17] INFO: User logged in: ah768@gmail.com
+[2026-01-21 14:04:56] INFO: User logged in: ah768@gmail.com
+[2026-01-21 14:11:33] ERROR: Error adding payment: 
+Invalid `prisma.customerPayments.create()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\payments.controllers.ts:34:51
+
+  31     .status(404)
+  32     .json({ success: false, message: "Customer not found", data: null });
+  33 }
+→ 34 const payment = await prisma.customerPayments.create({
+       data: {
+         customerId: "de0fde91-e40f-4783-b383-3da16e59ca99",
+         method: "Cash",
+         date: "2026-01-17",
+               ~~~~~~~~~~~~
+         amount: 50000.5,
+         receipt: "RCPT-1768986692498"
+       }
+     })
+
+Invalid value for argument `date`: premature end of input. Expected ISO-8601 DateTime.
+[2026-01-21 14:25:41] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
+[2026-01-21 14:26:34] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
+[2026-01-23 12:04:01] INFO: User logged in: ah768@gmail.com
+[2026-01-23 20:29:34] INFO: User logged in: ah768@gmail.com
+[2026-01-23 21:36:40] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
+[2026-01-23 21:48:04] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
+[2026-01-23 21:50:04] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
+[2026-01-23 21:50:22] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
+[2026-01-23 22:13:39] INFO: User logged in: ah768@gmail.com
+[2026-01-23 22:26:05] INFO: User logged in: ah768@gmail.com
+[2026-01-23 22:30:07] INFO: User logged in: ah768@gmail.com
+[2026-01-23 22:36:35] INFO: User logged in: ah768@gmail.com
+[2026-01-23 22:39:47] INFO: User logged in: ah768@gmail.com
+[2026-01-23 22:41:45] INFO: User logged in: ah768@gmail.com
+[2026-01-23 22:43:22] INFO: User logged in: ah768@gmail.com
+[2026-01-23 23:02:34] INFO: User logged in: ah768@gmail.com
+[2026-01-23 23:04:16] INFO: User logged in: ah768@gmail.com
+[2026-01-23 23:14:15] INFO: User registered: ah768@gmail.com
+[2026-01-23 23:14:28] INFO: User logged in: ah768@gmail.com
+[2026-01-23 23:28:20] INFO: User logged in: ah768@gmail.com
+[2026-01-23 23:34:42] INFO: User logged in: ah768@gmail.com
+[2026-01-23 23:42:40] INFO: User logged in: ah768@gmail.com
+[2026-01-23 23:47:59] INFO: User logged in: ah768@gmail.com
+[2026-01-23 23:48:58] INFO: User logged in: ah768@gmail.com
+[2026-01-24 00:01:14] INFO: User logged in: ah768@gmail.com
+[2026-01-24 11:36:02] INFO: User logged in: ah768@gmail.com
+[2026-01-24 11:37:46] INFO: User logged in: ah768@gmail.com
+[2026-01-24 12:11:50] INFO: User logged in: ah768@gmail.com
+[2026-01-24 12:15:49] INFO: User logged in: ah768@gmail.com
+[2026-01-24 12:16:27] WARN: Invalid customer data
+[2026-01-24 12:16:32] WARN: Invalid customer data
+[2026-01-24 12:17:12] WARN: Invalid customer data
+[2026-01-24 12:17:55] WARN: Invalid customer data
+[2026-01-24 12:21:23] WARN: Invalid customer data
+[2026-01-24 12:22:02] WARN: Invalid customer data
+[2026-01-24 12:24:06] WARN: Invalid customer data
+[2026-01-24 12:24:34] INFO: User logged in: ah768@gmail.com
+[2026-01-24 12:25:08] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
+[2026-01-24 12:26:38] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`
+[2026-01-24 12:27:35] WARN: Invalid customer data
+[2026-01-24 12:33:49] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
+[2026-01-24 12:38:44] INFO: User logged in: ah768@gmail.com
+[2026-01-25 08:43:02] INFO: User logged in: ah768@gmail.com
+[2026-01-25 09:22:15] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
+[2026-01-26 21:43:59] INFO: User logged in: ah768@gmail.com
+[2026-01-26 21:44:50] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
+[2026-01-26 21:45:19] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99

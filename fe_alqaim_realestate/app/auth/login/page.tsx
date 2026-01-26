@@ -22,7 +22,6 @@ type FieldErrors = {
 };
 
 export default function SignupPage() {
-  const router = useRouter();
   const { login } = useAuth();
 
   const [form, setForm] = useState({

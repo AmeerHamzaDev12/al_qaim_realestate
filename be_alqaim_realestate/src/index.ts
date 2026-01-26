@@ -8,6 +8,10 @@ import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import authRouter from './routes/auth.routes';
 import customerRouter from './routes/customers.routes';
+import paymentRouter from './routes/payments.routes';
+import receiptRouter from './routes/receipt.routes';
+import dashboardRouter from './routes/dashboard.routes';
+import { dash } from 'pdfkit';
 // import path from 'path';
 
 dotenv.config();
@@ -18,8 +22,8 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: '*',
-    credentials:true
+    origin: "http://localhost:3000",
+    credentials: true,
   })
 );
 
@@ -28,7 +32,10 @@ app.use(cookieParser());
 app.use(compression());
 
 app.use('/', authRouter);
+app.use('/',paymentRouter);
 app.use('/', customerRouter);
+app.use('/', receiptRouter);
+app.use('/',dashboardRouter);
 app.use((req: Request, res: Response) => {
   return res.status(404).json({
     success: false,

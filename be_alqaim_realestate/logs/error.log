@@ -29,3 +29,31 @@ E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers
   228 
 → 229 await prisma.customer.delete(
 An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.
+[2026-01-21 14:11:33] ERROR: Error adding payment: 
+Invalid `prisma.customerPayments.create()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\payments.controllers.ts:34:51
+
+  31     .status(404)
+  32     .json({ success: false, message: "Customer not found", data: null });
+  33 }
+→ 34 const payment = await prisma.customerPayments.create({
+       data: {
+         customerId: "de0fde91-e40f-4783-b383-3da16e59ca99",
+         method: "Cash",
+         date: "2026-01-17",
+               ~~~~~~~~~~~~
+         amount: 50000.5,
+         receipt: "RCPT-1768986692498"
+       }
+     })
+
+Invalid value for argument `date`: premature end of input. Expected ISO-8601 DateTime.
+[2026-01-24 12:26:38] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`

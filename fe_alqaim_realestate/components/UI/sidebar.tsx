@@ -27,7 +27,7 @@ const menuItems = [
   },
   {
     name: "Payments",
-    href: "/dashboard/payments",
+    href: "/payments",
     icon: Wallet,
   },
   {
@@ -45,7 +45,8 @@ const menuItems = [
 export default function Sidebar() {
   const pathname = usePathname();
   const { logout, isAuthenticated, loading: authLoading } = useAuth();
-  if (authLoading && !isAuthenticated) return null;
+  if (authLoading) return null;
+  if (!isAuthenticated) return null;
   const handleLogout = () => {
     logout();
   };

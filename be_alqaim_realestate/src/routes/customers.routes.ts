@@ -10,8 +10,8 @@ import { authMiddleware } from "../middleware/auth.middleware";
 
 const router = express.Router();
 
-router.get("/customers/all", getAllCustomers);
-router.get("/customers/:id", getCustomerById);
+router.get("/customers/all",authMiddleware, getAllCustomers);
+router.get("/customers/:id",authMiddleware ,getCustomerById);
 router.post("/customers/add", authMiddleware, createCustomer);
 router.put("/customers/:id", authMiddleware, updateCustomer);
 router.delete("/customers/:id", authMiddleware, deleteCustomer);

@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import prisma from "../Prisma";
 import logger from "../logger";
-import nodemailer from "nodemailer";
 import { z } from "zod";
 
 const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key";
@@ -121,13 +120,8 @@ export const loginUser = async (req: Request, res: Response) => {
       success: true,
       message: "User logged in successfully",
       data: {
-        token,
-        user: {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-        },
-      },
+        token
+      }
     });
   } catch (e: any) {
     logger.error(`Login failed for ${email}: ${e.message}`);

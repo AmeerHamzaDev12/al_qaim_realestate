@@ -13,7 +13,7 @@ const customerSchema = z.object({
   plotType: z.string().nonempty("Plot Type is required"),
   phase: z.string().nonempty("Phase is required"),
   bookingDate: z.string().nonempty("Booking Date is required"),
-  totalPrice: z.string().nonempty("Total Price is required"),
+  totalPrice: z.number().min(0, "Total Price is required"),
 });
 
 const updateCustomerSchema = customerSchema.partial();
@@ -87,8 +87,9 @@ export const createCustomer = async (req: Request, res: Response) => {
     plotType,
     phase,
     bookingDate,
-    totalPrice,
+    totalPrice: totalPriceRaw,
   } = parsed.data;
+  const totalPrice = totalPriceRaw;
 
   try {
     const existingCustomer = await prisma.customer.findUnique({
@@ -113,7 +114,7 @@ export const createCustomer = async (req: Request, res: Response) => {
         plotType,
         phase,
         bookingDate: new Date(bookingDate),
-        totalPrice: parseFloat(totalPrice),
+        totalPrice,
       },
     });
 
@@ -154,8 +155,9 @@ export const updateCustomer = async (req: Request, res: Response) => {
       plotType,
       phase,
       bookingDate,
-      totalPrice,
+      totalPrice: totalPriceRaw,
     } = parsed.data;
+    const totalPrice = totalPriceRaw !== undefined ? totalPriceRaw : undefined;
 
     const existingCustomer = await prisma.customer.findUnique({
       where: { id: String(id) },
@@ -193,7 +195,7 @@ export const updateCustomer = async (req: Request, res: Response) => {
         ...(plotType && { plotType }),
         ...(phase && { phase }),
         ...(bookingDate && { bookingDate: new Date(bookingDate) }),
-        ...(totalPrice && { totalPrice: parseFloat(totalPrice) }),
+        ...(totalPrice !== undefined && { totalPrice }),
       },
     });
 

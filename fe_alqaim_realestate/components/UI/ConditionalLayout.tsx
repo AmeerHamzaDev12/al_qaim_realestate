@@ -13,13 +13,14 @@ export default function ConditionalLayout({
   const isAuthPage = pathname.startsWith("/auth");
   const isHomePage = pathname === "/";
 
-  if (!isAuthPage && !isHomePage) {
-    return (
-      <div className="min-h-screen bg-gray-100 flex">
-        <Sidebar />
-        <main className="flex-1 p-6 overflow-auto">{children}</main>
-      </div>
-    );
+  if (isAuthPage || isHomePage) {
+    return <>{children}</>;
   }
-  return <>{children}</>;
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex">
+      <Sidebar />
+      <main className="flex-1 p-6 overflow-auto">{children}</main>
+    </div>
+  );
 }
