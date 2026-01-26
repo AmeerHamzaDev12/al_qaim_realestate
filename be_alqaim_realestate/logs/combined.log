@@ -172,3 +172,4 @@ Foreign key constraint violated on the constraint: `customerPayments_customerId_
 [2026-01-26 21:43:59] INFO: User logged in: ah768@gmail.com
 [2026-01-26 21:44:50] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
 [2026-01-26 21:45:19] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
+[2026-01-26 22:30:42] INFO: Payment added for customer: bb503f37-1d19-4146-922f-e765fd95483a
