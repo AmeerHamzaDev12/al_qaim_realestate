@@ -173,3 +173,29 @@ Foreign key constraint violated on the constraint: `customerPayments_customerId_
 [2026-01-26 21:44:50] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
 [2026-01-26 21:45:19] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
 [2026-01-26 22:30:42] INFO: Payment added for customer: bb503f37-1d19-4146-922f-e765fd95483a
+[2026-01-26 23:50:27] INFO: User logged in: ah768@gmail.com
+[2026-01-27 00:23:02] ERROR: Get me error: 
+Invalid `prisma.userAdmin.findUnique()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\auth.controllers.ts:149:41
+
+  146   });
+  147 }
+  148 
+→ 149 const user = await prisma.userAdmin.findUnique(
+Can't reach database server at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`.
+[2026-01-27 22:04:16] INFO: Invalid password for user: ah768@gmail.com
+[2026-01-27 22:04:36] INFO: User logged in: ah768@gmail.com
+[2026-01-27 22:04:49] INFO: User logged in: ah768@gmail.com
+[2026-01-27 22:04:51] INFO: User logged in: ah768@gmail.com
+[2026-01-27 22:04:52] INFO: User logged in: ah768@gmail.com
+[2026-01-27 22:04:53] INFO: User logged in: ah768@gmail.com
+[2026-01-27 22:04:54] INFO: User logged in: ah768@gmail.com
+[2026-01-27 22:05:16] INFO: User logged in: ah768@gmail.com
+[2026-01-27 22:05:18] INFO: User logged in: ah768@gmail.com
+[2026-01-27 22:05:20] INFO: User logged in: ah768@gmail.com
+[2026-01-27 22:05:21] INFO: User logged in: ah768@gmail.com
+[2026-01-27 22:05:24] INFO: User logged in: ah768@gmail.com
+[2026-01-27 22:05:49] INFO: User logged in: ah768@gmail.com
+[2026-01-27 22:05:50] INFO: User logged in: ah768@gmail.com

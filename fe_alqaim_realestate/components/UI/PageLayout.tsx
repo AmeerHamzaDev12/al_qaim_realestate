@@ -1,15 +1,14 @@
 "use client";
-
+import { use, useEffect, useState } from "react";
+import { UserInfoIcons } from "@/components/UserInfoIcons/UserInfoIcons";
 import { useAuth } from "@/context/AuthContext";
-import { User } from "lucide-react";
-
 interface PageLayoutProps {
   title: string;
   children: React.ReactNode;
 }
 
 export default function PageLayout({ title, children }: PageLayoutProps) {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
   const getCurrentDate = () => {
     const date = new Date();
@@ -22,24 +21,19 @@ export default function PageLayout({ title, children }: PageLayoutProps) {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
-      <div className="flex justify-between items-start mb-8">
+      <div className="flex justify-between items-center mb-8 flex-wrap gap-6">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
-          <p className="text-gray-500">
-            Welcome back, {user?.name || "User"} ({user?.role?.toUpperCase() || "USER"})
-          </p>
+          <p className="text-gray-500">Welcome back, {user?.name || "User"}</p>
         </div>
-        <div className="flex items-center gap-3">
-          <div className="text-right">
+        <div className="flex items-center gap-4 min-w-85 max-w-full">
+          <div className="text-right leading-tight">
             <p className="text-gray-900 font-medium">{getCurrentDate()}</p>
-            <p className="text-gray-400 text-sm">Local Office Time</p>
+            <p className="text-gray-400 text-xs">Local Office Time</p>
           </div>
-          <div className="w-12 h-12 rounded-full bg-blue-100 overflow-hidden flex items-center justify-center cursor-pointer hover:bg-blue-200 transition-colors">
-            <User className="w-6 h-6 text-blue-500" />
-          </div>
+          <UserInfoIcons user={user} loading={loading} />
         </div>
       </div>
-
       {children}
     </div>
   );

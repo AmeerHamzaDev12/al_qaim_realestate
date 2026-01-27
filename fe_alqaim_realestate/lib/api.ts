@@ -54,6 +54,13 @@ export interface DashboardSummary {
   totalPayments: number;
 }
 
+export interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: string;
+}
+
 export async function registerUser(userData: {
   name: string;
   email: string;
@@ -514,5 +521,25 @@ export async function getRecentPayments() {
     return { success: false, message: data.message };
   } catch (error: any) {
     return { success: false, message: error.message };
+  }
+}
+
+export async function getCurrentUser() {
+  try {
+    const token = localStorage.getItem("authToken");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}auth/CurrentUser`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    if (res.ok && data.success) {
+      return { success: true, data: data.data as UserProfile };
+    }
+    return { success: false, message: data.message || "Failed to fetch user" };
+  } catch (error: any) {
+    return { success: false, message: error.message || "Failed to fetch user" };
   }
 }

@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ConditionalLayout from "@/components/UI/ConditionalLayout";
 import { AuthProvider } from "@/context/AuthContext";
+import { MantineProvider } from "@mantine/core";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,9 +36,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider>
-          <ConditionalLayout>{children}</ConditionalLayout>
-        </AuthProvider>
+        <MantineProvider>
+          <AuthProvider>
+            <ConditionalLayout>{children}</ConditionalLayout>
+          </AuthProvider>
+        </MantineProvider>
       </body>
     </html>
   );
