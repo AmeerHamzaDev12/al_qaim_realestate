@@ -97,3 +97,14 @@ E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers
   230 
 → 231 await prisma.customer.delete(
 Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`
+[2026-02-13 21:48:15] ERROR: Login failed for ah768@gmail.com: 
+Invalid `prisma.userAdmin.findUnique()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\auth.controllers.ts:98:41
+
+  95 
+  96 const { email, password } = parsed.data;
+  97 try {
+→ 98   const user = await prisma.userAdmin.findUnique(
+Can't reach database server at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`.

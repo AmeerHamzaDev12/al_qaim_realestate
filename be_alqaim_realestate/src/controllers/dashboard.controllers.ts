@@ -55,7 +55,7 @@ export const getWeeklyCollection = async (req: Request, res: Response) => {
       const key = day.toLocaleDateString("en-US", { weekday: "short" });
       summary[key] = 0;
     }
-    payments.forEach(p => {
+    payments.forEach((p: { date: string | number | Date; amount: number; }) => {
       const key = new Date(p.date).toLocaleDateString("en-US", { weekday: "short" });
       summary[key] += p.amount;
     });
