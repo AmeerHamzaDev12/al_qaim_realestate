@@ -22,7 +22,7 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://wondrous-liger-55a15b.netlify.app/",
     credentials: true,
   })
 );
