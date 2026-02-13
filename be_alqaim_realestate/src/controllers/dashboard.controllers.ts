@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import prisma from "../Prisma";
+import prisma from "../prisma.config";
 
 export const getDashboardSummary = async (req: Request, res: Response) => {
   try {
