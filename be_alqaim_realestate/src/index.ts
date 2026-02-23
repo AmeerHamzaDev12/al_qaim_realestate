@@ -22,7 +22,7 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: "https://wondrous-liger-55a15b.netlify.app/",
+    origin: "*",
     credentials: true,
   })
 );

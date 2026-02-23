@@ -248,3 +248,39 @@ Can't reach database server at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.
 Please make sure your database server is running at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`.
 [2026-02-13 21:48:24] INFO: User logged in: ah768@gmail.com
 [2026-02-13 21:50:37] INFO: User logged in: ah768@gmail.com
+[2026-02-14 15:57:02] INFO: User registered: ah766@gmail.com
+[2026-02-14 15:57:10] INFO: User already exists: ah766@gmail.com
+[2026-02-14 15:57:24] INFO: User logged in: ah766@gmail.com
+[2026-02-14 15:57:38] INFO: User logged in: ah766@gmail.com
+[2026-02-14 15:58:09] INFO: User logged in: ah766@gmail.com
+[2026-02-14 16:14:48] INFO: User logged in: ah768@gmail.com
+[2026-02-14 16:22:15] INFO: User logged in: ah768@gmail.com
+[2026-02-14 16:28:13] INFO: User logged in: ah766@gmail.com
+[2026-02-14 16:30:09] INFO: User logged in: ah766@gmail.com
+[2026-02-14 19:13:36] INFO: User not found: ah786@gmail.com
+[2026-02-14 19:13:55] INFO: User not found: ah786@gmail.com
+[2026-02-14 19:15:35] INFO: User logged in: ah768@gmail.com
+[2026-02-14 19:15:58] INFO: User logged in: ah768@gmail.com
+[2026-02-14 19:16:13] WARN: Invalid registration data
+[2026-02-14 19:16:52] INFO: User not found: ah786@gmail.com
+[2026-02-14 19:17:00] INFO: User not found: ah786@gmail.com
+[2026-02-14 19:17:11] INFO: User not found: ah786@gmail.com
+[2026-02-14 19:17:30] INFO: User already exists: ah766@gmail.com
+[2026-02-14 19:17:41] INFO: User not found: ah786@gmail.com
+[2026-02-14 19:17:48] INFO: User not found: ah786@gmail.com
+[2026-02-14 19:18:29] INFO: User logged in: ah766@gmail.com
+[2026-02-22 11:49:35] ERROR: Login failed for ah768@gmail.com: 
+Invalid `prisma.userAdmin.findUnique()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\auth.controllers.ts:98:41
+
+  95 
+  96 const { email, password } = parsed.data;
+  97 try {
+→ 98   const user = await prisma.userAdmin.findUnique(
+Can't reach database server at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`.
+[2026-02-22 11:50:16] INFO: User logged in: ah768@gmail.com
+[2026-02-22 20:52:44] INFO: User logged in: ah768@gmail.com
+[2026-02-22 20:57:13] INFO: Payment added for customer: bb503f37-1d19-4146-922f-e765fd95483a
+[2026-02-22 22:37:29] INFO: User logged in: ah768@gmail.com

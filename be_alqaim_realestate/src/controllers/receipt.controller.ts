@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import prisma from "../prisma.config";
+import prisma from "../Prisma";
 import logger from "../logger";
 import { z } from "zod";
 import PDFDocument from "pdfkit"

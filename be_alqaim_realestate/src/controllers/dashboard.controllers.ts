@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
-import prisma from "../prisma.config";
-
+import prisma from "../Prisma";
 export const getDashboardSummary = async (req: Request, res: Response) => {
   try {
     const totalCustomers = await prisma.customer.count();
