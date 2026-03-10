@@ -284,3 +284,158 @@ Please make sure your database server is running at `ep-lively-hat-ahg0w3co-pool
 [2026-02-22 20:52:44] INFO: User logged in: ah768@gmail.com
 [2026-02-22 20:57:13] INFO: Payment added for customer: bb503f37-1d19-4146-922f-e765fd95483a
 [2026-02-22 22:37:29] INFO: User logged in: ah768@gmail.com
+[2026-02-23 13:03:31] INFO: User logged in: ah768@gmail.com
+[2026-02-23 14:38:51] INFO: Payment added for customer: e976156a-8701-4530-80b0-599e02db0409
+[2026-02-23 14:49:13] INFO: Payment added for customer: de0fde91-e40f-4783-b383-3da16e59ca99
+[2026-02-23 14:59:36] WARN: Invalid payment data
+[2026-02-23 14:59:43] WARN: Invalid payment data
+[2026-02-23 15:00:24] WARN: Invalid payment data
+[2026-02-23 15:00:55] INFO: User logged in: ah768@gmail.com
+[2026-02-23 15:01:33] INFO: Payment added for customer: bb503f37-1d19-4146-922f-e765fd95483a
+[2026-02-23 15:39:09] INFO: User logged in: ah768@gmail.com
+[2026-02-24 21:19:52] INFO: User logged in: ah768@gmail.com
+[2026-02-24 21:20:03] INFO: User logged in: ah768@gmail.com
+[2026-02-24 21:21:03] WARN: Invalid payment data
+[2026-02-24 21:21:09] WARN: Invalid payment data
+[2026-02-24 21:21:59] WARN: Invalid payment data
+[2026-02-24 21:22:49] INFO: User logged in: ah768@gmail.com
+[2026-02-24 21:23:33] WARN: Invalid payment data
+[2026-02-24 21:24:19] INFO: User logged in: ah768@gmail.com
+[2026-02-24 21:24:43] WARN: Invalid payment data
+[2026-02-24 21:25:16] WARN: Invalid payment data
+[2026-02-24 21:27:18] WARN: Invalid payment data
+[2026-02-24 21:27:36] INFO: Payment added for customer: e976156a-8701-4530-80b0-599e02db0409
+[2026-02-24 21:33:34] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.
+[2026-02-24 21:34:43] WARN: Invalid payment data
+[2026-02-24 21:35:06] INFO: User logged in: ah768@gmail.com
+[2026-02-24 21:36:07] INFO: Payment added for customer: bb503f37-1d19-4146-922f-e765fd95483a
+[2026-02-24 21:39:35] INFO: Payment added for customer: bb503f37-1d19-4146-922f-e765fd95483a
+[2026-02-24 21:42:15] INFO: User registered: sherzadabbas721@gmail.com
+[2026-02-24 21:42:35] INFO: User logged in: sherzadabbas721@gmail.com
+[2026-02-28 10:10:10] INFO: User logged in: ah768@gmail.com
+[2026-02-28 10:10:26] INFO: User logged in: ah768@gmail.com
+[2026-02-28 10:20:48] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`
+[2026-02-28 10:20:49] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`
+[2026-02-28 10:20:49] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`
+[2026-02-28 10:20:56] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`
+[2026-02-28 10:20:56] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`
+[2026-02-28 10:21:05] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`
+[2026-02-28 10:21:05] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`
+[2026-02-28 10:22:01] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`
+[2026-02-28 10:22:02] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`
+[2026-02-28 10:23:05] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+Foreign key constraint violated on the constraint: `customerPayments_customerId_fkey`
+[2026-02-28 10:24:22] ERROR: Error deleting customer: 
+Invalid `prisma.customer.delete()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\customers.controllers.ts:231:33
+
+  228   });
+  229 }
+  230 
+→ 231 await prisma.customer.delete(
+An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.
+[2026-02-28 10:37:35] INFO: Payment added for customer: 6fbb5cbb-3869-4fc1-8af9-918365d4352e
+[2026-02-28 11:01:41] INFO: Payment added for customer: 23600125-5632-466e-9432-8341aa7d544e
+[2026-02-28 11:41:05] INFO: Payment added for customer: a820df64-8ac5-4482-87fe-e0c45f96f68d
+[2026-02-28 11:47:59] INFO: Payment added for customer: a820df64-8ac5-4482-87fe-e0c45f96f68d
+[2026-02-28 21:27:02] INFO: User logged in: ah768@gmail.com
+[2026-03-03 11:39:51] ERROR: Login failed for ah768@gmail.com: 
+Invalid `prisma.userAdmin.findUnique()` invocation in
+E:\Al-Qaim RealEstate\be_alqaim_realestate\src\controllers\auth.controllers.ts:98:41
+
+  95 
+  96 const { email, password } = parsed.data;
+  97 try {
+→ 98   const user = await prisma.userAdmin.findUnique(
+Can't reach database server at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-lively-hat-ahg0w3co-pooler.c-3.us-east-1.aws.neon.tech:5432`.
+[2026-03-03 11:41:51] INFO: User logged in: ah768@gmail.com
+[2026-03-03 11:51:43] INFO: User logged in: ah768@gmail.com

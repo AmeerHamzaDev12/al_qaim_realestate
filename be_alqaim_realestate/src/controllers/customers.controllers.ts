@@ -14,6 +14,9 @@ const customerSchema = z.object({
   phase: z.string().nonempty("Phase is required"),
   bookingDate: z.string().nonempty("Booking Date is required"),
   totalPrice: z.number().min(0, "Total Price is required"),
+  paymentType: z.string().optional().default("CASH"),
+  totalInstallments: z.number().optional().nullable(),
+  downPayment: z.number().optional().nullable(),
 });
 
 const updateCustomerSchema = customerSchema.partial();
@@ -87,9 +90,11 @@ export const createCustomer = async (req: Request, res: Response) => {
     plotType,
     phase,
     bookingDate,
-    totalPrice: totalPriceRaw,
+    totalPrice,
+    paymentType,
+    totalInstallments,
+    downPayment,
   } = parsed.data;
-  const totalPrice = totalPriceRaw;
 
   try {
     const existingCustomer = await prisma.customer.findUnique({
@@ -115,6 +120,13 @@ export const createCustomer = async (req: Request, res: Response) => {
         phase,
         bookingDate: new Date(bookingDate),
         totalPrice,
+        paymentType: paymentType || "CASH",
+        totalInstallments:
+          paymentType === "INSTALLMENT" && totalInstallments
+            ? totalInstallments
+            : null,
+        downPayment:
+          paymentType === "INSTALLMENT" && downPayment ? downPayment : null,
       },
     });
 
@@ -155,9 +167,11 @@ export const updateCustomer = async (req: Request, res: Response) => {
       plotType,
       phase,
       bookingDate,
-      totalPrice: totalPriceRaw,
+      totalPrice,
+      paymentType,
+      totalInstallments,
+      downPayment,
     } = parsed.data;
-    const totalPrice = totalPriceRaw !== undefined ? totalPriceRaw : undefined;
 
     const existingCustomer = await prisma.customer.findUnique({
       where: { id: String(id) },
@@ -183,6 +197,8 @@ export const updateCustomer = async (req: Request, res: Response) => {
       }
     }
 
+    const finalPaymentType = paymentType ?? existingCustomer.paymentType;
+
     const customer = await prisma.customer.update({
       where: { id: String(id) },
       data: {
@@ -196,6 +212,15 @@ export const updateCustomer = async (req: Request, res: Response) => {
         ...(phase && { phase }),
         ...(bookingDate && { bookingDate: new Date(bookingDate) }),
         ...(totalPrice !== undefined && { totalPrice }),
+        paymentType: finalPaymentType,
+        totalInstallments:
+          finalPaymentType === "INSTALLMENT" && totalInstallments
+            ? totalInstallments
+            : null,
+        downPayment:
+          finalPaymentType === "INSTALLMENT" && downPayment
+            ? downPayment
+            : null,
       },
     });
 
@@ -227,6 +252,11 @@ export const deleteCustomer = async (req: Request, res: Response) => {
         message: "Customer not found",
       });
     }
+
+    // Delete all payments linked to this customer first
+    await prisma.customerPayments.deleteMany({
+      where: { customerId: String(id) },
+    });
 
     await prisma.customer.delete({
       where: { id: String(id) },

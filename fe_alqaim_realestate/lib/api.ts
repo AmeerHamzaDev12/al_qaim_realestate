@@ -12,6 +12,9 @@ export interface Customer {
   phase: string;
   bookingDate: string;
   totalPrice: number;
+  paymentType: string;
+  totalInstallments?: number;
+  downPayment?: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -27,23 +30,37 @@ export interface CustomerFormData {
   phase: string;
   bookingDate: string;
   totalPrice: number;
+  paymentType: string;
+  totalInstallments?: number;
+  downPayment?: number;
 }
 
 export interface Payment {
   id: string;
-  receipt: string;
   customerId: string;
-  customer: Customer;
   method: string;
+  paymentStructure: string;
   date: string;
   amount: number;
+  receipt: string;
+  installmentNumber?: number;
+  customer?: {
+    id: string;
+    name: string;
+    paymentType?: string;
+    totalInstallments?: number;
+    downPayment?: number;
+    totalPrice?: number;
+  };
 }
 
 export interface PaymentFormData {
   customerId: string;
   method: string;
+  paymentStructure: string;
   date: string;
   amount: string;
+  installmentNumber?: number;
 }
 
 export interface DashboardSummary {

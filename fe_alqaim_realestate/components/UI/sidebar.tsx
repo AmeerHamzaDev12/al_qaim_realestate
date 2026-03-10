@@ -10,8 +10,6 @@ import {
   Wallet,
   FolderKanban,
   FileText,
-  LogOut,
-  Building2,
 } from "lucide-react";
 
 const menuItems = [
@@ -30,30 +28,16 @@ const menuItems = [
     href: "/payments",
     icon: Wallet,
   },
-  {
-    name: "Projects",
-    href: "/dashboard/projects",
-    icon: FolderKanban,
-  },
-  {
-    name: "Reports",
-    href: "/dashboard/reports",
-    icon: FileText,
-  },
 ];
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const { logout, isAuthenticated, loading: authLoading } = useAuth();
+  const { isAuthenticated, loading: authLoading } = useAuth();
   if (authLoading) return null;
   if (!isAuthenticated) return null;
-  const handleLogout = () => {
-    logout();
-  };
 
   return (
     <div className="w-64 bg-slate-800 min-h-screen flex flex-col">
-      {/* Logo */}
       <div className="p-6 flex items-center gap-3">
         <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
           <Image
